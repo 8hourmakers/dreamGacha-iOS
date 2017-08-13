@@ -8,6 +8,7 @@ target 'DreamGacha' do
   # Pods for DreamGacha
   # Swift 3.1 - Xcode 8.3
   pod 'HGCircularSlider', '~> 2.0.0'
+  pod 'Gifu'
 
   target 'DreamGachaTests' do
     inherit! :search_paths

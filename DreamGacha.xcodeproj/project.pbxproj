@@ -10,6 +10,7 @@
 		272F89E11F3FF3CB00F68867 /* RecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F89E01F3FF3CB00F68867 /* RecordVC.swift */; };
 		272F89E31F3FF4BE00F68867 /* GlobalUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F89E21F3FF4BE00F68867 /* GlobalUtil.swift */; };
 		272F89E51F40019000F68867 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 272F89E41F40019000F68867 /* Fonts */; };
+		272F89E71F401F9900F68867 /* LoginVideo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 272F89E61F401F9900F68867 /* LoginVideo.gif */; };
 		27837E631F2DCE0E00411A10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27837E621F2DCE0E00411A10 /* AppDelegate.swift */; };
 		27837E681F2DCE0E00411A10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27837E661F2DCE0E00411A10 /* Main.storyboard */; };
 		27837E6A1F2DCE0E00411A10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27837E691F2DCE0E00411A10 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 		27837E831F2DCE0E00411A10 /* DreamGachaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27837E821F2DCE0E00411A10 /* DreamGachaUITests.swift */; };
 		3C3B2E0313866D24B26F453B /* Pods_DreamGacha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A9A4A1E5D29E33CAFFDF18 /* Pods_DreamGacha.framework */; };
 		5DCB78E8453CAF4D3E292B74 /* Pods_DreamGachaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F516CFD56B279DFD55A1DBAD /* Pods_DreamGachaTests.framework */; };
+		61B58DF0DA080599C62A469D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5883885AEB22AD2EBA2C8 /* LoginVC.swift */; };
 		E622E918B38881AD8624AF5A /* Pods_DreamGachaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C2CC36087D957E43CC0B12 /* Pods_DreamGachaUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,7 @@
 		272F89E01F3FF3CB00F68867 /* RecordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVC.swift; sourceTree = "<group>"; };
 		272F89E21F3FF4BE00F68867 /* GlobalUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtil.swift; sourceTree = "<group>"; };
 		272F89E41F40019000F68867 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		272F89E61F401F9900F68867 /* LoginVideo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LoginVideo.gif; sourceTree = "<group>"; };
 		27837E5F1F2DCE0E00411A10 /* DreamGacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamGacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27837E621F2DCE0E00411A10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27837E671F2DCE0E00411A10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,6 +62,7 @@
 		299A40F8B11D92D8A36EE72F /* Pods-DreamGachaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamGachaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DreamGachaUITests/Pods-DreamGachaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		49D0AA888444F246B3F2E331 /* Pods-DreamGacha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamGacha.release.xcconfig"; path = "Pods/Target Support Files/Pods-DreamGacha/Pods-DreamGacha.release.xcconfig"; sourceTree = "<group>"; };
 		5F9678164C6C0EDDA9F3ADE8 /* Pods-DreamGacha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamGacha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DreamGacha/Pods-DreamGacha.debug.xcconfig"; sourceTree = "<group>"; };
+		61B5883885AEB22AD2EBA2C8 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		7AFF70C4C0C64C1F4516CCF5 /* Pods-DreamGachaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamGachaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DreamGachaUITests/Pods-DreamGachaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7E78751B610BF09A9808ED90 /* Pods-DreamGachaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamGachaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DreamGachaTests/Pods-DreamGachaTests.release.xcconfig"; sourceTree = "<group>"; };
 		88C2CC36087D957E43CC0B12 /* Pods_DreamGachaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DreamGachaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +122,7 @@
 		27837E611F2DCE0E00411A10 /* DreamGacha */ = {
 			isa = PBXGroup;
 			children = (
+				272F89E61F401F9900F68867 /* LoginVideo.gif */,
 				272F89E41F40019000F68867 /* Fonts */,
 				27837E621F2DCE0E00411A10 /* AppDelegate.swift */,
 				272F89E01F3FF3CB00F68867 /* RecordVC.swift */,
@@ -126,6 +131,7 @@
 				27837E6B1F2DCE0E00411A10 /* LaunchScreen.storyboard */,
 				27837E6E1F2DCE0E00411A10 /* Info.plist */,
 				272F89E21F3FF4BE00F68867 /* GlobalUtil.swift */,
+				61B5883885AEB22AD2EBA2C8 /* LoginVC.swift */,
 			);
 			path = DreamGacha;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 				27837E6A1F2DCE0E00411A10 /* Assets.xcassets in Resources */,
 				27837E681F2DCE0E00411A10 /* Main.storyboard in Resources */,
 				272F89E51F40019000F68867 /* Fonts in Resources */,
+				272F89E71F401F9900F68867 /* LoginVideo.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +466,7 @@
 				272F89E31F3FF4BE00F68867 /* GlobalUtil.swift in Sources */,
 				272F89E11F3FF3CB00F68867 /* RecordVC.swift in Sources */,
 				27837E631F2DCE0E00411A10 /* AppDelegate.swift in Sources */,
+				61B58DF0DA080599C62A469D /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

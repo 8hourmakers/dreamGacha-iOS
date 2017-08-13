@@ -90,6 +90,10 @@ extension UIViewController {
             toastLabel.removeFromSuperview()
         })
     }
+
+    func hideKeyboard() {
+        self.view.endEditing(true)
+    }
 }
 
 //https://stackoverflow.com/a/43664156
