@@ -23,7 +23,7 @@ class ServerClient {
                 "password":password
         ]
 
-        HttpUtil.connect(url: HOST+uri, data: json, httpMethod: .post) { (res, json) in
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .post) { (res, json) in
             if !res.isSuccess() {
                 callback(json["message"].stringValue)
                 return
@@ -45,7 +45,7 @@ class ServerClient {
                 "password":password
         ]
 
-        HttpUtil.connect(url: HOST+uri, data: json, httpMethod: .post) { (res, json) in
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .post) { (res, json) in
             if !res.isSuccess() {
                 callback(json["message"].stringValue)
                 return
@@ -62,14 +62,14 @@ class ServerClient {
 class HttpUtil {
     static func connect(url: String,
                         header: [String:String] = [:],
-                        data: JSON,
+                        json: JSON,
                         httpMethod: HTTPMethod = .post,
                         callback: @escaping (HTTPURLResponse, JSON) -> Void) {
         var url = url
 
         if httpMethod == HTTPMethod.get {
             url += "?"
-            for (key, subJson):(String, JSON) in data {
+            for (key, subJson):(String, JSON) in json {
                 url += "\(key)=\(subJson.rawValue)&"
             }
             //remove last '&'
@@ -87,7 +87,7 @@ class HttpUtil {
         }
 
         if httpMethod != .get {
-            request.httpBody = String(describing: data).data(using: String.Encoding.utf8);
+            request.httpBody = String(describing: json).data(using: String.Encoding.utf8);
         }
 
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -96,7 +96,7 @@ class HttpUtil {
                 return
             }
 
-            let res = String(data:data, encoding:String.Encoding.utf8)!
+            let res = String(data: data, encoding:String.Encoding.utf8)!
             print("<HTTP> \(url) : \(data) -> \(res)\n\n")
 
             callback(response, JSON(data))

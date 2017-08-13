@@ -1,9 +1,8 @@
 //
 //  GlobalUtil.swift
-//  DreamGacha
 //
-//  Created by Noverish Harold on 2017. 8. 13..
-//  Copyright © 2017년 8hourmakers. All rights reserved.
+//  Created by Noverish Harold.
+//  Copyright © 2017년 Noverish. All rights reserved.
 //
 
 import Foundation
