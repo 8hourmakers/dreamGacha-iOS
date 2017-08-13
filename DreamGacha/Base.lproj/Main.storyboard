@@ -1,14 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="THE정고딕130.otf">
+            <string>THEJung130</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--RecordVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RecordVC" customModule="DreamGacha" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +26,132 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jxV-sQ-vjT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.4392156862745098" green="0.0" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVX-j0-Yrg">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="a73-Ym-mb3"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="bC1-hl-fHI"/>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I42-M5-J09" userLabel="Circle Progress Group">
+                                <rect key="frame" x="68" y="154" width="238" height="238"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pej-SU-wNv" customClass="CircularSlider" customModule="HGCircularSlider">
+                                        <rect key="frame" x="0.0" y="0.0" width="238" height="238"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="238" id="G1m-OC-DTK"/>
+                                            <constraint firstAttribute="width" constant="238" id="j9Q-g1-a5y"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diskFillColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="backtrackLineWidth">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="thumbLineWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                <real key="value" value="60"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="numberOfRounds">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lx-4K-yD3">
+                                        <rect key="frame" x="24" y="24" width="190" height="190"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="190" id="fkb-1s-C4B"/>
+                                            <constraint firstAttribute="height" constant="190" id="iwS-Ah-fbW"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCl-92-KOz">
+                                        <rect key="frame" x="139" y="109" width="47.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="THEJung130" family="THEJung130" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyX-bZ-wH2">
+                                        <rect key="frame" x="51.5" y="109" width="47.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="THEJung130" family="THEJung130" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pej-SU-wNv" secondAttribute="trailing" id="0SS-dm-5je"/>
+                                    <constraint firstItem="2lx-4K-yD3" firstAttribute="centerX" secondItem="I42-M5-J09" secondAttribute="centerX" id="0SV-HZ-Hvq"/>
+                                    <constraint firstItem="VCl-92-KOz" firstAttribute="leading" secondItem="I42-M5-J09" secondAttribute="centerX" constant="20" id="2UV-zQ-3F3"/>
+                                    <constraint firstAttribute="bottom" secondItem="pej-SU-wNv" secondAttribute="bottom" id="8Bj-SY-1aW"/>
+                                    <constraint firstItem="VyX-bZ-wH2" firstAttribute="centerY" secondItem="I42-M5-J09" secondAttribute="centerY" id="DCL-3T-QpF"/>
+                                    <constraint firstItem="pej-SU-wNv" firstAttribute="top" secondItem="I42-M5-J09" secondAttribute="top" id="Jgl-Ld-xwC"/>
+                                    <constraint firstAttribute="centerX" secondItem="VyX-bZ-wH2" secondAttribute="trailing" constant="20" id="Ut3-wL-jO3"/>
+                                    <constraint firstItem="2lx-4K-yD3" firstAttribute="centerY" secondItem="I42-M5-J09" secondAttribute="centerY" id="fbI-96-Hq8"/>
+                                    <constraint firstItem="pej-SU-wNv" firstAttribute="leading" secondItem="I42-M5-J09" secondAttribute="leading" id="jow-63-okc"/>
+                                    <constraint firstItem="VCl-92-KOz" firstAttribute="centerY" secondItem="I42-M5-J09" secondAttribute="centerY" id="msS-e0-o2y"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nw9-6E-JOY">
+                                <rect key="frame" x="123" y="500" width="129" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="recordClicked" destination="BYZ-38-t0r" eventType="touchUpInside" id="knR-GT-50D"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="NVX-j0-Yrg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="H5Q-LY-jxy"/>
+                            <constraint firstItem="I42-M5-J09" firstAttribute="top" secondItem="NVX-j0-Yrg" secondAttribute="bottom" constant="90" id="VEg-zV-nsH"/>
+                            <constraint firstItem="I42-M5-J09" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XQB-Ek-xsM"/>
+                            <constraint firstItem="NVX-j0-Yrg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="i67-pl-aDB"/>
+                            <constraint firstAttribute="trailing" secondItem="NVX-j0-Yrg" secondAttribute="trailing" id="wpw-Br-zzD"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bg" destination="jxV-sQ-vjT" id="kAm-h0-um6"/>
+                        <outlet property="circleProgress" destination="pej-SU-wNv" id="2WA-aa-1BA"/>
+                        <outlet property="circleProgressDisk" destination="2lx-4K-yD3" id="7fF-Eh-eiC"/>
+                        <outlet property="recordedTime" destination="VCl-92-KOz" id="S1K-Mj-QWs"/>
+                        <outlet property="remainingTime" destination="VyX-bZ-wH2" id="L56-DD-soh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="420" y="-286.50674662668666"/>
         </scene>
     </scenes>
 </document>
