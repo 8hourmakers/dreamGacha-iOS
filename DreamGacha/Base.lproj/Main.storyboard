@@ -51,6 +51,16 @@
                                                     <constraint firstAttribute="height" constant="68" id="B6q-ez-fhG"/>
                                                 </constraints>
                                                 <state key="normal" image="loginBtn"/>
+                                                <connections>
+                                                    <action selector="loginClicked" destination="V8m-sB-Asd" eventType="touchUpInside" id="1rf-ZX-j30"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nsm-7N-hwr">
+                                                <rect key="frame" x="25.5" y="507" width="324" height="68"/>
+                                                <state key="normal" image="registerBtn"/>
+                                                <connections>
+                                                    <action selector="signUpClicked" destination="V8m-sB-Asd" eventType="touchUpInside" id="7En-LV-QyU"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dM-xX-PtT">
                                                 <rect key="frame" x="109" y="605" width="156.5" height="34"/>
@@ -62,6 +72,9 @@
                                                 <state key="normal" title="Create an Account">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="createAccountClicked" destination="V8m-sB-Asd" eventType="touchUpInside" id="mCL-Sb-HJh"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ct-yo-Jvl">
                                                 <rect key="frame" x="30" y="423" width="315" height="40"/>
@@ -70,7 +83,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -91,7 +104,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -117,6 +130,8 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="bEk-x5-Udh" secondAttribute="bottom" constant="92" id="1ue-so-pNV"/>
                                             <constraint firstAttribute="trailing" secondItem="Gqj-4J-jWn" secondAttribute="trailing" constant="30" id="1wh-ZY-Rdr"/>
+                                            <constraint firstItem="Nsm-7N-hwr" firstAttribute="trailing" secondItem="bEk-x5-Udh" secondAttribute="trailing" id="2RP-un-3OK"/>
+                                            <constraint firstItem="Nsm-7N-hwr" firstAttribute="bottom" secondItem="bEk-x5-Udh" secondAttribute="bottom" id="3du-cM-Aew"/>
                                             <constraint firstItem="3dM-xX-PtT" firstAttribute="centerX" secondItem="fv6-PF-Xau" secondAttribute="centerX" id="Bla-cG-VWB"/>
                                             <constraint firstItem="Uca-y0-Hfy" firstAttribute="centerX" secondItem="fv6-PF-Xau" secondAttribute="centerX" id="Cjs-w2-ndZ"/>
                                             <constraint firstItem="S2I-Cd-9Bp" firstAttribute="trailing" secondItem="Gqj-4J-jWn" secondAttribute="trailing" id="DwL-YG-0Dv"/>
@@ -129,7 +144,9 @@
                                             <constraint firstItem="Uca-y0-Hfy" firstAttribute="top" secondItem="fv6-PF-Xau" secondAttribute="top" constant="101" id="V9r-zn-uiU"/>
                                             <constraint firstItem="tId-k8-AqJ" firstAttribute="trailing" secondItem="6ct-yo-Jvl" secondAttribute="trailing" id="Wfo-Ec-MSk"/>
                                             <constraint firstItem="bEk-x5-Udh" firstAttribute="top" secondItem="6ct-yo-Jvl" secondAttribute="bottom" constant="44" id="bMe-83-X5P"/>
+                                            <constraint firstItem="Nsm-7N-hwr" firstAttribute="top" secondItem="bEk-x5-Udh" secondAttribute="top" id="cyY-ib-Rv0"/>
                                             <constraint firstItem="6ct-yo-Jvl" firstAttribute="top" secondItem="Gqj-4J-jWn" secondAttribute="bottom" constant="15" id="iFh-Yu-efm"/>
+                                            <constraint firstItem="Nsm-7N-hwr" firstAttribute="leading" secondItem="bEk-x5-Udh" secondAttribute="leading" id="l5U-Y4-icK"/>
                                             <constraint firstItem="bEk-x5-Udh" firstAttribute="centerX" secondItem="fv6-PF-Xau" secondAttribute="centerX" id="n2z-K2-9hr"/>
                                             <constraint firstAttribute="trailing" secondItem="6ct-yo-Jvl" secondAttribute="trailing" constant="30" id="oUb-ph-gRT"/>
                                             <constraint firstItem="S2I-Cd-9Bp" firstAttribute="leading" secondItem="Gqj-4J-jWn" secondAttribute="leading" id="xuB-GA-pZo"/>
@@ -195,15 +212,50 @@
                         <outlet property="appLogoHeight" destination="HVM-CX-DkF" id="P0c-Zo-9Gv"/>
                         <outlet property="appLogoTop" destination="nwY-SH-FFJ" id="ubG-N1-VbX"/>
                         <outlet property="appLogoWidth" destination="7mz-tC-DXJ" id="YVs-k1-kOK"/>
+                        <outlet property="emailField" destination="Gqj-4J-jWn" id="wCv-ws-UQo"/>
                         <outlet property="gifImageView" destination="WWn-ZS-lhr" id="llN-RE-u8w"/>
+                        <outlet property="loginBtn" destination="bEk-x5-Udh" id="gNv-NE-kOG"/>
+                        <outlet property="passwordField" destination="6ct-yo-Jvl" id="tru-or-0Al"/>
+                        <outlet property="registerBtn" destination="Nsm-7N-hwr" id="ZKZ-lT-aHC"/>
                         <outlet property="scrollView" destination="o5v-Jq-agq" id="JIW-vW-6bj"/>
                         <outlet property="splash" destination="W7y-QI-urB" id="OaW-4O-k3E"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="" id="O5N-Wc-H58"/>
+                        <segue destination="eig-bB-fHg" kind="presentation" identifier="segMain" id="D8D-e7-R8R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Wn-xa-mnO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-335.19999999999999" y="-275.71214392803603"/>
+        </scene>
+        <!--MainVC-->
+        <scene sceneID="aAY-Xy-zjw">
+            <objects>
+                <viewController id="eig-bB-fHg" customClass="MainVC" customModule="DreamGacha" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ves-bh-Uch"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cr4-Sc-jrn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uli-2r-ilm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvN-j7-Bzv">
+                                <rect key="frame" x="209" y="538" width="95" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.43921568630000002" green="0.0" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="record">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="segRecord" id="Sx7-Bq-NdR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mnT-BI-xo9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="364" y="-276.61169415292358"/>
         </scene>
         <!--RecordVC-->
         <scene sceneID="tne-QT-ifu">
@@ -341,12 +393,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="425" y="-276"/>
+            <point key="canvasLocation" x="1166" y="-276"/>
         </scene>
     </scenes>
     <resources>
         <image name="AppLogo" width="180" height="215"/>
         <image name="SplashBG" width="375" height="667"/>
         <image name="loginBtn" width="323" height="68"/>
+        <image name="registerBtn" width="323" height="68"/>
     </resources>
 </document>

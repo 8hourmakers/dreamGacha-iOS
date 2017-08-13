@@ -94,6 +94,19 @@ extension UIViewController {
     func hideKeyboard() {
         self.view.endEditing(true)
     }
+
+    func showAlertView(title: String,
+                       msg: String,
+                       preferredStyle: UIAlertControllerStyle = .alert,
+                       actions: [UIAlertAction] = []) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: preferredStyle)
+
+        for action in actions {
+            alert.addAction(action)
+        }
+
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 //https://stackoverflow.com/a/43664156

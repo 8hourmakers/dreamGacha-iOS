@@ -20,7 +20,12 @@ class LoginVC: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var gifImageView: GIFImageView!
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     var mIsKeyboardShown = false
+    var mIsLoginMode = true
 
     override func viewDidLoad() {
         gifImageView.animate(withGIFNamed: "LoginVideo")
@@ -54,11 +59,47 @@ class LoginVC: UIViewController {
     }
 
     @IBAction func loginClicked() {
+        ServerClient.login(
+                email: emailField.text ?? "",
+                password: passwordField.text ?? "") { (msg) in
+            DispatchQueue.main.async {
+                guard let msg = msg else {
+                    self.performSegue(withIdentifier: "segMain", sender: nil)
+                    return
+                }
 
+                self.showToast(msg)
+            }
+        }
     }
 
     @IBAction func signUpClicked() {
+        ServerClient.register(
+                email: emailField.text ?? "",
+                password: passwordField.text ?? "") { (msg) in
+            DispatchQueue.main.async {
+                guard let msg = msg else {
+                    self.performSegue(withIdentifier: "segMain", sender: nil)
+                    return
+                }
 
+                self.showToast(msg)
+            }
+        }
+    }
+
+    @IBAction func createAccountClicked() {
+        mIsLoginMode = !mIsLoginMode
+
+        UIView.animate(
+                withDuration: 0.4,
+                animations: {
+                    self.loginBtn.alpha = (self.mIsLoginMode) ? 1 : 0
+                    self.registerBtn.alpha = (self.mIsLoginMode) ? 0 : 1
+                }, completion: { success in
+
+                }
+        )
     }
 
     func keyboardWillShow(notification: NSNotification) {

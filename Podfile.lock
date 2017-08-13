@@ -1,15 +1,18 @@
 PODS:
   - Gifu (2.0.1)
   - HGCircularSlider (2.0.0)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Gifu
   - HGCircularSlider (~> 2.0.0)
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Gifu: 90bd26ea4d65f8322c4cca8cbb0ca1418f5457ad
   HGCircularSlider: 92e2ee098c814709f455b8f46cd9008147f6a869
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: b2c57b562bb143388c738bd248f182c884bfad14
+PODFILE CHECKSUM: 2cddc8d2a2b22fdaaef5195e70bd7076123ee930
 
 COCOAPODS: 1.2.1
