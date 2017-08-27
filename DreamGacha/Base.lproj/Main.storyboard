@@ -83,7 +83,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -238,18 +238,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvN-j7-Bzv">
-                                <rect key="frame" x="209" y="538" width="95" height="89"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.43921568630000002" green="0.0" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="record">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="3bH-Xu-HXk">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQH-5F-d24">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="B16-Xm-B9M"/>
+                                </constraints>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem title="꿈 기록" id="jBL-o2-oqQ">
+                                        <barButtonItem key="leftBarButtonItem" image="btnNavUser" id="cpW-Cr-of7">
+                                            <color key="tintColor" red="0.46274509803921571" green="0.19215686274509802" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" image="btnNavDelete" id="MXy-tI-17E">
+                                            <color key="tintColor" red="0.46274509800000002" green="0.19215686269999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rfz-lu-RNb" customClass="DreamTable" customModule="DreamGacha" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvN-j7-Bzv">
+                                <rect key="frame" x="269" y="559" width="92" height="98"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="92" id="Vqg-4K-duJ"/>
+                                    <constraint firstAttribute="height" constant="98" id="saf-yh-Es4"/>
+                                </constraints>
+                                <state key="normal" image="btnFabRecording">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="3bH-Xu-HXk" secondAttribute="trailing" id="2wR-Dq-KU6"/>
+                            <constraint firstItem="YQH-5F-d24" firstAttribute="top" secondItem="ves-bh-Uch" secondAttribute="bottom" id="4fl-8d-p5l"/>
+                            <constraint firstItem="YQH-5F-d24" firstAttribute="leading" secondItem="Uli-2r-ilm" secondAttribute="leading" id="7rw-th-5Jg"/>
+                            <constraint firstAttribute="trailing" secondItem="Rfz-lu-RNb" secondAttribute="trailing" id="Hl7-hK-obA"/>
+                            <constraint firstItem="Cr4-Sc-jrn" firstAttribute="top" secondItem="bvN-j7-Bzv" secondAttribute="bottom" constant="10" id="IMh-UG-Kl4"/>
+                            <constraint firstItem="Rfz-lu-RNb" firstAttribute="top" secondItem="YQH-5F-d24" secondAttribute="bottom" id="LbS-xB-uAa"/>
+                            <constraint firstItem="Rfz-lu-RNb" firstAttribute="leading" secondItem="Uli-2r-ilm" secondAttribute="leading" id="Rcs-nt-JOh"/>
+                            <constraint firstAttribute="trailing" secondItem="bvN-j7-Bzv" secondAttribute="trailing" constant="14" id="Vyn-Yw-zTj"/>
+                            <constraint firstItem="3bH-Xu-HXk" firstAttribute="leading" secondItem="Uli-2r-ilm" secondAttribute="leading" id="dXf-bt-mcS"/>
+                            <constraint firstItem="Cr4-Sc-jrn" firstAttribute="top" secondItem="3bH-Xu-HXk" secondAttribute="bottom" id="nV3-LM-5Vd"/>
+                            <constraint firstItem="3bH-Xu-HXk" firstAttribute="top" secondItem="YQH-5F-d24" secondAttribute="bottom" id="nie-SD-RgL"/>
+                            <constraint firstItem="Cr4-Sc-jrn" firstAttribute="top" secondItem="Rfz-lu-RNb" secondAttribute="bottom" id="uId-Iu-t8E"/>
+                            <constraint firstAttribute="trailing" secondItem="YQH-5F-d24" secondAttribute="trailing" id="v6q-xB-Q8g"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="dreamTable" destination="Rfz-lu-RNb" id="8R7-m8-Zfy"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="segRecord" id="Sx7-Bq-NdR"/>
                     </connections>
                 </viewController>
@@ -399,6 +442,10 @@
     <resources>
         <image name="AppLogo" width="180" height="215"/>
         <image name="SplashBG" width="375" height="667"/>
+        <image name="background" width="375" height="667"/>
+        <image name="btnFabRecording" width="92" height="98"/>
+        <image name="btnNavDelete" width="28" height="28"/>
+        <image name="btnNavUser" width="28" height="28"/>
         <image name="loginBtn" width="323" height="68"/>
         <image name="registerBtn" width="323" height="68"/>
     </resources>

@@ -6,4 +6,11 @@
 import UIKit
 
 class MainVC: UIViewController {
+    @IBOutlet weak var dreamTable: DreamTable!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        dreamTable.initiate(vc: self)
+    }
 }

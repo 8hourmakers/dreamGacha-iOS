@@ -57,6 +57,28 @@ class ServerClient {
             callback(nil)
         }
     }
+
+    static func getDreamList(lastDreamId: Int?,
+                             callback: (([DreamItem]) -> Void)? = nil) {
+//        let uri = "/dreams/"
+//        var json:JSON = []
+//
+//        if let lastDreamId = lastDreamId {
+//            json["start_id"].int = lastDreamId
+//        }
+//
+//        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .get) { (res, json) in
+//            var items:[DreamItem] = []
+//
+//            for item in json.arrayValue {
+//                items.append(DreamItem(item))
+//            }
+//
+//            callback?(items)
+//        }
+
+        callback?(DreamItem.getDummies(count: 10))
+    }
 }
 
 class HttpUtil {

@@ -33,7 +33,13 @@ class LoginVC: UIViewController {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard)))
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
+
+        if let email = UserDefaults.standard.string(forKey: ServerClient.USER_DEFAULT_EMAIL),
+           let password = UserDefaults.standard.string(forKey: ServerClient.USER_DEFAULT_PASSWORD) {
+            emailField.text = email
+            passwordField.text = password
+        }
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.hideSplash()
         }
@@ -118,7 +124,7 @@ class LoginVC: UIViewController {
     }
 
     func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let _ = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if mIsKeyboardShown {
                 mIsKeyboardShown = false
 

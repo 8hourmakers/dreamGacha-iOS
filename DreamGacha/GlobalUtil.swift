@@ -1,8 +1,10 @@
 //
 //  GlobalUtil.swift
 //
-//  Created by Noverish Harold.
+//  For Swift 3.1
+//  Created by Noverish Harold on 2017.5.28..
 //  Copyright © 2017년 Noverish. All rights reserved.
+//  https://gist.github.com/Noverish/f16c1c7e780e675bca7bc1e6079159d2
 //
 
 import Foundation
@@ -27,13 +29,18 @@ extension UIView {
                    color:UIColor = UIColor.black,
                    offset:CGSize = CGSize.zero,
                    opacity:Float = 0.5) {
-        
+
         self.layer.shadowRadius = CGFloat(radius)
         self.layer.shadowColor = color.cgColor
         self.layer.shadowOffset = offset
         self.layer.shadowOpacity = opacity
     }
-    
+
+    func setRadius(_ radius: CGFloat? = nil) {
+        self.layer.cornerRadius = radius ?? self.frame.width / 2;
+        self.layer.masksToBounds = true;
+    }
+
     /*
      func addShadow() {
      self.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.3).cgColor
@@ -42,28 +49,28 @@ extension UIView {
      self.layer.shadowRadius = 2
      }
      */
-    
+
     func setBorder(width: CGFloat = 1,
                    color: UIColor = UIColor.black) {
         self.layer.borderWidth = width
         self.layer.borderColor = color.cgColor
     }
-    
+
     func setGradient(colors:[UIColor] = [UIColor.white, UIColor.black],
                      startPoint: CGPoint = CGPoint(0, 0),
                      endPoint: CGPoint = CGPoint(1, 1),
                      cornerRadius: CGFloat = 0) {
-        
+
         let gradientLayer1 = CAGradientLayer()
         gradientLayer1.frame = self.bounds
         gradientLayer1.colors = colors.map { $0.cgColor }
         gradientLayer1.cornerRadius = cornerRadius
         gradientLayer1.startPoint = startPoint
         gradientLayer1.endPoint = endPoint
-        
+
         self.layer.addSublayer(gradientLayer1)
     }
-    
+
     func updateLayers() {
         self.layer.sublayers?.forEach {
             $0.frame = self.frame
@@ -137,7 +144,7 @@ extension UIColor {
     convenience init(r: Int, g: Int, b: Int, a:Int = 255) {
         self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: CGFloat(a)/255)
     }
-    
+
     convenience init(argb: Int) {
         var alpha:Int = argb >> 24
         if alpha == 0 {
@@ -145,10 +152,10 @@ extension UIColor {
         }
 
         self.init(
-            r: (argb >> 16) & 0xFF,
-            g: (argb >> 8) & 0xFF,
-            b: argb & 0xFF,
-            a: alpha
+                r: (argb >> 16) & 0xFF,
+                g: (argb >> 8) & 0xFF,
+                b: argb & 0xFF,
+                a: alpha
         )
     }
 
@@ -158,12 +165,12 @@ extension UIColor {
 
         self.init(argb: rgb)
     }
-    
+
     convenience init(gray: Int) {
         self.init(
-            r: gray,
-            g: gray,
-            b: gray
+                r: gray,
+                g: gray,
+                b: gray
         )
     }
 }
@@ -194,12 +201,20 @@ extension Date {
         formatter.timeZone = Calendar.current.timeZone
         self.init(timeInterval: 0, since: formatter.date(from: "\(year)-\(month)-\(day)")!)
     }
-    
+
     func toString(format: String) -> String{
         let formatter = DateFormatter()
         formatter.dateFormat = format
         formatter.locale = Calendar.current.locale
         formatter.timeZone = Calendar.current.timeZone
         return formatter.string(from: self)
+    }
+}
+
+extension Collection where Indices.Iterator.Element == Index {
+    
+    /// Returns the element at the specified index iff it is within bounds, otherwise nil.
+    subscript (safe index: Index) -> Generator.Element? {
+        return indices.contains(index) ? self[index] : nil
     }
 }
