@@ -57,9 +57,21 @@
                                     <constraint firstAttribute="width" constant="24" id="P8L-Nn-1V8"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcL-fS-c8W">
+                                <rect key="frame" x="17" y="45" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Prn-Io-wIU"/>
+                                    <constraint firstAttribute="width" constant="40" id="mUc-5P-vdk"/>
+                                </constraints>
+                                <state key="normal" image="radioOff1"/>
+                                <connections>
+                                    <action selector="radioBtnClicked:" destination="s4v-r0-joc" eventType="touchUpInside" id="T7S-9I-RM4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.90980392160000001" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="PcL-fS-c8W" firstAttribute="centerY" secondItem="nF9-oZ-R74" secondAttribute="centerY" id="11H-mn-V2o"/>
                             <constraint firstItem="lTm-Hh-m4w" firstAttribute="top" secondItem="BVE-3k-hA9" secondAttribute="bottom" constant="13" id="B70-FX-Vgb"/>
                             <constraint firstItem="lTm-Hh-m4w" firstAttribute="leading" secondItem="BVE-3k-hA9" secondAttribute="leading" id="Gpo-vS-H0b"/>
                             <constraint firstItem="h00-Ln-6qW" firstAttribute="centerY" secondItem="nF9-oZ-R74" secondAttribute="centerY" id="MQc-5o-Xv8"/>
@@ -68,6 +80,7 @@
                             <constraint firstItem="BVE-3k-hA9" firstAttribute="top" secondItem="nF9-oZ-R74" secondAttribute="top" constant="20" id="g2e-Ed-FAA"/>
                             <constraint firstAttribute="trailing" secondItem="h00-Ln-6qW" secondAttribute="trailing" constant="12" id="guH-Mm-70p"/>
                             <constraint firstItem="pkn-dz-Mdn" firstAttribute="top" secondItem="lTm-Hh-m4w" secondAttribute="bottom" constant="5" id="vMO-qc-jUk"/>
+                            <constraint firstItem="PcL-fS-c8W" firstAttribute="leading" secondItem="nF9-oZ-R74" secondAttribute="leading" constant="17" id="wkY-ZT-mfG"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -81,14 +94,17 @@
             <size key="customSize" width="356" height="131"/>
             <connections>
                 <outlet property="bg" destination="nF9-oZ-R74" id="c9C-f6-amP"/>
-                <outlet property="content" destination="pkn-dz-Mdn" id="ldn-CQ-BEP"/>
-                <outlet property="date" destination="BVE-3k-hA9" id="cPw-Vg-tyt"/>
-                <outlet property="title" destination="lTm-Hh-m4w" id="hvv-Jy-39t"/>
+                <outlet property="contentLabel" destination="pkn-dz-Mdn" id="qU5-ju-CGl"/>
+                <outlet property="dateLabel" destination="BVE-3k-hA9" id="jIL-1R-iKJ"/>
+                <outlet property="dateLabelLeading" destination="XXX-fD-t3M" id="weW-NU-bzC"/>
+                <outlet property="radioBtn" destination="PcL-fS-c8W" id="OgW-hn-fPc"/>
+                <outlet property="titleLabel" destination="lTm-Hh-m4w" id="Fz2-Ke-zQS"/>
             </connections>
             <point key="canvasLocation" x="9" y="-59.5"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="arrowRight1" width="24" height="24"/>
+        <image name="radioOff1" width="40" height="40"/>
     </resources>
 </document>

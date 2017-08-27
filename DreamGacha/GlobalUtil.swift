@@ -218,3 +218,19 @@ extension Collection where Indices.Iterator.Element == Index {
         return indices.contains(index) ? self[index] : nil
     }
 }
+
+extension Array where Element: Equatable {
+
+    // Remove first collection element that is equal to the given `object`:
+    mutating func remove(object: Element) {
+        if let index = index(of: object) {
+            remove(at: index)
+        }
+    }
+}
+
+//extension Array {
+//    func contains(obj: Element) -> Bool {
+//        return self.filter({$0 === obj}).count > 0
+//    }
+//}

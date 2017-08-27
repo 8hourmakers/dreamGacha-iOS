@@ -254,6 +254,9 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="btnNavDelete" id="MXy-tI-17E">
                                             <color key="tintColor" red="0.46274509800000002" green="0.19215686269999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="deleteClicked" destination="eig-bB-fHg" id="ncK-Lz-aVG"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -272,7 +275,34 @@
                                 <state key="normal" image="btnFabRecording">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="recordClicked" destination="eig-bB-fHg" eventType="touchUpInside" id="l6b-34-OTA"/>
+                                </connections>
                             </button>
+                            <navigationBar alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tge-iW-3BO">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.46274509800000002" green="0.19215686269999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="꿈 기록" id="eZx-64-gd6">
+                                        <barButtonItem key="leftBarButtonItem" title="전체선택" id="yzK-yp-zlm">
+                                            <color key="tintColor" red="0.46274509800000002" green="0.19215686269999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="selectAllClicked" destination="eig-bB-fHg" id="Ovt-UW-UVy"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="취소하기" id="YGd-k2-fmB">
+                                            <color key="tintColor" red="0.46274509800000002" green="0.19215686269999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="deleteDreamClicked" destination="eig-bB-fHg" id="ibU-Ic-ulZ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -292,8 +322,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deleteNavBar" destination="tge-iW-3BO" id="po4-zf-bbd"/>
+                        <outlet property="deleteNavBarBtn2" destination="YGd-k2-fmB" id="x0v-0X-urZ"/>
                         <outlet property="dreamTable" destination="Rfz-lu-RNb" id="8R7-m8-Zfy"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="segRecord" id="Sx7-Bq-NdR"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segRecord" id="Sx7-Bq-NdR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mnT-BI-xo9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -319,14 +351,24 @@
                             </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVX-j0-Yrg">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="a73-Ym-mb3"/>
                                 </constraints>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="bC1-hl-fHI"/>
+                                    <navigationItem title="Title" id="bC1-hl-fHI">
+                                        <barButtonItem key="leftBarButtonItem" image="btnNavUser" id="lz2-hE-pEZ">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I42-M5-J09" userLabel="Circle Progress Group">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I42-M5-J09" userLabel="Circle Progress Group">
                                 <rect key="frame" x="68" y="154" width="238" height="238"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pej-SU-wNv" customClass="CircularSlider" customModule="HGCircularSlider">
@@ -407,36 +449,72 @@
                                     <constraint firstItem="VCl-92-KOz" firstAttribute="centerY" secondItem="I42-M5-J09" secondAttribute="centerY" id="msS-e0-o2y"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nw9-6E-JOY">
-                                <rect key="frame" x="123" y="500" width="129" height="96"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nw9-6E-JOY">
+                                <rect key="frame" x="148" y="456" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="btnRecordStart"/>
                                 <connections>
                                     <action selector="recordClicked" destination="BYZ-38-t0r" eventType="touchUpInside" id="knR-GT-50D"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmr-n8-aYC">
+                                <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="zat-9d-BLL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="리스트">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backClicked" destination="BYZ-38-t0r" eventType="touchUpInside" id="mXB-G1-Qle"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JC-8D-pdz">
+                                <rect key="frame" x="40" y="476" width="86" height="40"/>
+                                <state key="normal" image="btnRecordPlayOff"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07o-8q-GBq">
+                                <rect key="frame" x="250" y="476" width="86" height="40"/>
+                                <state key="normal" image="btnRecordSaveOff"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="07o-8q-GBq" firstAttribute="centerY" secondItem="Nw9-6E-JOY" secondAttribute="centerY" id="0Et-Pb-e0D"/>
+                            <constraint firstItem="tmr-n8-aYC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6zK-Nk-muJ"/>
                             <constraint firstItem="NVX-j0-Yrg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="H5Q-LY-jxy"/>
+                            <constraint firstItem="Nw9-6E-JOY" firstAttribute="leading" secondItem="1JC-8D-pdz" secondAttribute="trailing" constant="22" id="ROT-9T-6E2"/>
+                            <constraint firstItem="Nw9-6E-JOY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="THg-ex-7mz"/>
                             <constraint firstItem="I42-M5-J09" firstAttribute="top" secondItem="NVX-j0-Yrg" secondAttribute="bottom" constant="90" id="VEg-zV-nsH"/>
+                            <constraint firstItem="1JC-8D-pdz" firstAttribute="centerY" secondItem="Nw9-6E-JOY" secondAttribute="centerY" id="Vdf-gi-wPD"/>
+                            <constraint firstAttribute="trailing" secondItem="tmr-n8-aYC" secondAttribute="trailing" id="WQb-Hg-eRE"/>
                             <constraint firstItem="I42-M5-J09" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XQB-Ek-xsM"/>
+                            <constraint firstItem="tmr-n8-aYC" firstAttribute="top" secondItem="Nw9-6E-JOY" secondAttribute="bottom" constant="67" id="f67-9p-Qkh"/>
                             <constraint firstItem="NVX-j0-Yrg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="i67-pl-aDB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tmr-n8-aYC" secondAttribute="bottom" id="ic7-nQ-DCR"/>
+                            <constraint firstItem="07o-8q-GBq" firstAttribute="leading" secondItem="Nw9-6E-JOY" secondAttribute="trailing" constant="22" id="mPO-la-tXH"/>
                             <constraint firstAttribute="trailing" secondItem="NVX-j0-Yrg" secondAttribute="trailing" id="wpw-Br-zzD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="zpj-3B-ykG"/>
                     <connections>
                         <outlet property="bg" destination="jxV-sQ-vjT" id="kAm-h0-um6"/>
                         <outlet property="circleProgress" destination="pej-SU-wNv" id="2WA-aa-1BA"/>
                         <outlet property="circleProgressDisk" destination="2lx-4K-yD3" id="7fF-Eh-eiC"/>
+                        <outlet property="listBtn" destination="tmr-n8-aYC" id="biD-qh-uFs"/>
+                        <outlet property="navigationBar" destination="NVX-j0-Yrg" id="jIs-mQ-JzI"/>
+                        <outlet property="playBtn" destination="1JC-8D-pdz" id="R9G-Qo-YDy"/>
+                        <outlet property="recordBtn" destination="Nw9-6E-JOY" id="r9e-Wo-kU0"/>
                         <outlet property="recordedTime" destination="VCl-92-KOz" id="S1K-Mj-QWs"/>
                         <outlet property="remainingTime" destination="VyX-bZ-wH2" id="L56-DD-soh"/>
+                        <outlet property="saveBtn" destination="07o-8q-GBq" id="JLD-Kz-UXC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1166" y="-276"/>
+            <point key="canvasLocation" x="1165.5999999999999" y="-276.61169415292358"/>
         </scene>
     </scenes>
     <resources>
@@ -446,6 +524,9 @@
         <image name="btnFabRecording" width="92" height="98"/>
         <image name="btnNavDelete" width="28" height="28"/>
         <image name="btnNavUser" width="28" height="28"/>
+        <image name="btnRecordPlayOff" width="86" height="40"/>
+        <image name="btnRecordSaveOff" width="86" height="40"/>
+        <image name="btnRecordStart" width="80" height="80"/>
         <image name="loginBtn" width="323" height="68"/>
         <image name="registerBtn" width="323" height="68"/>
     </resources>
