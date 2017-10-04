@@ -8,78 +8,67 @@
 
 import UIKit
 
-class DreamTable: PagingTableView, PagingTableViewDataSource, PagingTableViewDelegate {
+class DreamTable: InfiniteTableView, InfiniteTableViewDataSource, InfiniteTableViewDelegate {
 
-    var selectedItems:[DreamItem] = []
-
-    var selectAllMode = false
-
-    func initiate(vc: UIViewController) {
-        super.initialize(nowVC: vc, dataSource: self)
-        super.sectionInset = CGFloat(10)
-        super.itemSpacing = CGFloat(5)
-
-        EventBus.register(self, event: .dreamCellSelected, action: #selector(self.dreamCellSelected))
-        EventBus.register(self, event: .dreamCellDeselected, action: #selector(self.dreamCellDeselected))
-    }
-    
-    func getNibName() -> String {
-        return "DreamCell"
-    }
-
-    func loadMoreItems(page: Int, callback: @escaping ([Any]) -> Void) {
-        ServerClient.getDreamList(lastDreamId: nil) { newItems in
-            callback(newItems)
+    var selectedItems:[DreamItem] {
+        get {
+            return items.map { $0 as! DreamItem }.filter{ $0.isSelected }
         }
     }
 
-    func setItem(cell: UICollectionViewCell, item: Any) -> UICollectionViewCell {
+    func initiate(vc: UIViewController) {
+        super.collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: CGFloat(10), left: CGFloat(10), bottom: CGFloat(10), right: CGFloat(10))
+        super.collectionViewFlowLayout.minimumLineSpacing = CGFloat(5)
+        super.initiate(nibName: String(describing: DreamCell.self), dataSource: self)
+    }
+
+    func infiniteTableView(_ infiniteTableView: InfiniteTableView, itemsOn page: Int, callback: @escaping ([Any]) -> Void) {
+        if(page == 1) {
+            ServerClient.getDreamList(lastDreamId: nil) { newItems in
+                callback(newItems)
+            }
+        } else {
+            callback([])
+        }
+    }
+
+    func infiniteTableView(_ infiniteTableView: InfiniteTableView, set cell: UICollectionViewCell, for item: Any) -> UICollectionViewCell {
         if let cell = cell as? DreamCell,
            let item = item as? DreamItem {
-            cell.setItem(item, selected: selectAllMode)
+            cell.setItem(item)
         }
 
         return cell
     }
 
-    func calcHeight(width: CGFloat, item: Any) -> CGFloat {
+    func infiniteTableView(_ infiniteTableView: InfiniteTableView, item lhs: Any, isEqualTo rhs: Any) -> Bool {
+        if let lhs = lhs as? DreamItem,
+           let rhs = rhs as? DreamItem {
+            return lhs.id == rhs.id
+        }
+
+        return false
+    }
+
+    @objc func infiniteTableView(_ infiniteTableView: InfiniteTableView, cellHeightOf item: Any, cellWidth: CGFloat) -> CGFloat {
         return CGFloat(110)
     }
-
-    func dreamCellSelected(_ notification: Notification) {
-        guard let item = notification.object as? DreamItem else {
-            return
+    
+    func selectAllClicked() {
+        let isAllSelected = items.reduce(true) {
+            $0 && ($1 as! DreamItem).isSelected
         }
 
-        selectedItems.append(item)
-    }
-
-    func dreamCellDeselected(_ notification: Notification) {
-        guard let item = notification.object as? DreamItem else {
-            return
-        }
-
-        selectedItems = selectedItems.filter { $0 !== item }
-    }
-
-    func selectAllDreamCells() {
-        selectedItems.removeAll()
-        selectedItems.append(contentsOf: items.map{ $0 as! DreamItem })
-
-        for cell in collectionView.visibleCells {
-            if let cell = cell as? DreamCell {
-                cell.enableRadio()
+        for item in items {
+            if let item = item as? DreamItem {
+                item.isSelected = !isAllSelected
             }
         }
-    }
 
-    func deselectAllDreamCells() {
-        selectedItems.removeAll()
-
-        for cell in collectionView.visibleCells {
-            if let cell = cell as? DreamCell {
-                cell.disableRadio()
-            }
+        if(isAllSelected) {
+            EventBus.post(event: .dreamCellDeselectAll)
+        } else {
+            EventBus.post(event: .dreamCellSelectAll)
         }
     }
 }

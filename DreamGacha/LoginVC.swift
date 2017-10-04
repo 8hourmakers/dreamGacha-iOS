@@ -36,12 +36,25 @@ class LoginVC: UIViewController {
 
         if let email = UserDefaults.standard.string(forKey: ServerClient.USER_DEFAULT_EMAIL),
            let password = UserDefaults.standard.string(forKey: ServerClient.USER_DEFAULT_PASSWORD) {
-            emailField.text = email
-            passwordField.text = password
+            ServerClient.login(email: email, password: password) { (msg) in
+                DispatchQueue.main.async {
+                    self.processLogin(loginSuccess: msg == nil, loginFailMsg: msg)
+                }
+            }
+        } else {
+            self.processLogin(loginSuccess: false, loginFailMsg: nil)
         }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.hideSplash()
+    }
+    
+    private func processLogin(loginSuccess: Bool, loginFailMsg: String?) {
+        if(loginSuccess) {
+            self.performSegue(withIdentifier: "segMain", sender: nil)
+        } else {
+            if let msg = loginFailMsg {
+                self.showToast(msg)
+            }
+            
+            hideSplash()
         }
     }
 

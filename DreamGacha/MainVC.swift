@@ -21,6 +21,7 @@ class MainVC: UIViewController {
         EventBus.register(self, event: .deleteModeDisabled, action: #selector(self.deleteModeDisabled))
         EventBus.register(self, event: .dreamCellSelected, action: #selector(self.dreamCellSelectionChanged))
         EventBus.register(self, event: .dreamCellDeselected, action: #selector(self.dreamCellSelectionChanged))
+        EventBus.register(self, event: .dreamCreated, action: #selector(self.dreamCreated))
     }
 
     @IBAction func deleteClicked() {
@@ -29,11 +30,7 @@ class MainVC: UIViewController {
     }
 
     @IBAction func selectAllClicked() {
-        if(dreamTable.selectedItems.count == dreamTable.items.count) {
-            dreamTable.deselectAllDreamCells()
-        } else {
-            dreamTable.selectAllDreamCells()
-        }
+        dreamTable.selectAllClicked()
     }
 
     @IBAction func deleteDreamClicked() {
@@ -41,7 +38,14 @@ class MainVC: UIViewController {
             MainVC.isDeleteMode = false
             EventBus.post(event: .deleteModeDisabled)
         } else {
-            print("delete : \(dreamTable.selectedItems)")
+            for item in dreamTable.selectedItems {
+                ServerClient.deleteDream(dreamId: item.id) {
+                    DispatchQueue.main.async {
+                        self.dreamTable.deleteItem(item)
+                        self.dreamCellSelectionChanged()
+                    }
+                }
+            }
         }
     }
 
@@ -66,6 +70,12 @@ class MainVC: UIViewController {
             self.deleteNavBarBtn2.title = "취소하기"
         } else {
             self.deleteNavBarBtn2.title = "삭제하기"
+        }
+    }
+    
+    func dreamCreated(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.dreamTable.refresh()
         }
     }
 }

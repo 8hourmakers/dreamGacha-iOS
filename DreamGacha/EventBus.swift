@@ -23,5 +23,6 @@ class EventBus {
         case dreamCellDeselected = "dream_cell_deselected"
         case dreamCellSelectAll = "dream_cell_select_all"
         case dreamCellDeselectAll = "dream_cell_deselect_all"
+        case dreamCreated = "dream_created"
     }
 }

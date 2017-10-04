@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		272BE5C51F8394B000C642EF /* InfiniteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272BE5C41F8394B000C642EF /* InfiniteTableView.swift */; };
 		272F89E11F3FF3CB00F68867 /* RecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F89E01F3FF3CB00F68867 /* RecordVC.swift */; };
 		272F89E31F3FF4BE00F68867 /* GlobalUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F89E21F3FF4BE00F68867 /* GlobalUtil.swift */; };
 		272F89E51F40019000F68867 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 272F89E41F40019000F68867 /* Fonts */; };
@@ -18,8 +19,6 @@
 		27837E781F2DCE0E00411A10 /* DreamGachaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27837E771F2DCE0E00411A10 /* DreamGachaTests.swift */; };
 		27837E831F2DCE0E00411A10 /* DreamGachaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27837E821F2DCE0E00411A10 /* DreamGachaUITests.swift */; };
 		27E6BB981F525EAC00FCBE95 /* DreamTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E6BB971F525EAC00FCBE95 /* DreamTable.swift */; };
-		27E6BB9B1F5285C200FCBE95 /* PagingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E6BB9A1F5285C200FCBE95 /* PagingTableView.swift */; };
-		27E6BB9D1F5285F400FCBE95 /* PagingTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E6BB9C1F5285F400FCBE95 /* PagingTableView.xib */; };
 		27E6BB9F1F5286D000FCBE95 /* DreamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E6BB9E1F5286D000FCBE95 /* DreamCell.xib */; };
 		3C3B2E0313866D24B26F453B /* Pods_DreamGacha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A9A4A1E5D29E33CAFFDF18 /* Pods_DreamGacha.framework */; };
 		5DCB78E8453CAF4D3E292B74 /* Pods_DreamGachaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F516CFD56B279DFD55A1DBAD /* Pods_DreamGachaTests.framework */; };
@@ -52,6 +51,7 @@
 /* Begin PBXFileReference section */
 		0779FF247469F45B90E4AAB5 /* Pods-DreamGachaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamGachaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DreamGachaTests/Pods-DreamGachaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		15A9A4A1E5D29E33CAFFDF18 /* Pods_DreamGacha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DreamGacha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		272BE5C41F8394B000C642EF /* InfiniteTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteTableView.swift; sourceTree = "<group>"; };
 		272F89E01F3FF3CB00F68867 /* RecordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVC.swift; sourceTree = "<group>"; };
 		272F89E21F3FF4BE00F68867 /* GlobalUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtil.swift; sourceTree = "<group>"; };
 		272F89E41F40019000F68867 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
@@ -69,8 +69,6 @@
 		27837E821F2DCE0E00411A10 /* DreamGachaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamGachaUITests.swift; sourceTree = "<group>"; };
 		27837E841F2DCE0E00411A10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27E6BB971F525EAC00FCBE95 /* DreamTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DreamTable.swift; sourceTree = "<group>"; };
-		27E6BB9A1F5285C200FCBE95 /* PagingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingTableView.swift; sourceTree = "<group>"; };
-		27E6BB9C1F5285F400FCBE95 /* PagingTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PagingTableView.xib; sourceTree = "<group>"; };
 		27E6BB9E1F5286D000FCBE95 /* DreamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DreamCell.xib; sourceTree = "<group>"; };
 		299A40F8B11D92D8A36EE72F /* Pods-DreamGachaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamGachaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DreamGachaUITests/Pods-DreamGachaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		49D0AA888444F246B3F2E331 /* Pods-DreamGacha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamGacha.release.xcconfig"; path = "Pods/Target Support Files/Pods-DreamGacha/Pods-DreamGacha.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,8 +149,7 @@
 				27E6BB991F52854400FCBE95 /* dream */,
 				27C7F5011F529EA800B4D4C5 /* util */,
 				61B5802A98864586E8A50477 /* ServerClient.swift */,
-				27E6BB9A1F5285C200FCBE95 /* PagingTableView.swift */,
-				27E6BB9C1F5285F400FCBE95 /* PagingTableView.xib */,
+				272BE5C41F8394B000C642EF /* InfiniteTableView.swift */,
 			);
 			path = DreamGacha;
 			sourceTree = "<group>";
@@ -351,7 +348,6 @@
 				27837E6A1F2DCE0E00411A10 /* Assets.xcassets in Resources */,
 				27837E681F2DCE0E00411A10 /* Main.storyboard in Resources */,
 				272F89E51F40019000F68867 /* Fonts in Resources */,
-				27E6BB9D1F5285F400FCBE95 /* PagingTableView.xib in Resources */,
 				272F89E71F401F9900F68867 /* LoginVideo.gif in Resources */,
 				27E6BB9F1F5286D000FCBE95 /* DreamCell.xib in Resources */,
 			);
@@ -523,10 +519,10 @@
 				61B58DF0DA080599C62A469D /* LoginVC.swift in Sources */,
 				61B5890A0470260E20691F80 /* ServerClient.swift in Sources */,
 				61B588028D5FB16AEC9B8F56 /* MainVC.swift in Sources */,
-				27E6BB9B1F5285C200FCBE95 /* PagingTableView.swift in Sources */,
 				61B58A075C2C8D2DFE9E4FAD /* DreamItem.swift in Sources */,
 				61B5866D403C959DC57B5110 /* DreamCell.swift in Sources */,
 				61B586A75166CCB4CE9CE3B0 /* EventBus.swift in Sources */,
+				272BE5C51F8394B000C642EF /* InfiniteTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +681,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-hourmakers.DreamGacha";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -699,6 +696,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-hourmakers.DreamGacha";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

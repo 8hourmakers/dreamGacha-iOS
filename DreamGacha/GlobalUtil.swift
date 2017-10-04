@@ -36,20 +36,6 @@ extension UIView {
         self.layer.shadowOpacity = opacity
     }
 
-    func setRadius(_ radius: CGFloat? = nil) {
-        self.layer.cornerRadius = radius ?? self.frame.width / 2;
-        self.layer.masksToBounds = true;
-    }
-
-    /*
-     func addShadow() {
-     self.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.3).cgColor
-     self.layer.shadowOpacity = 1
-     self.layer.shadowOffset = CGSize.zero
-     self.layer.shadowRadius = 2
-     }
-     */
-
     func setBorder(width: CGFloat = 1,
                    color: UIColor = UIColor.black) {
         self.layer.borderWidth = width
@@ -69,6 +55,10 @@ extension UIView {
         gradientLayer1.endPoint = endPoint
 
         self.layer.addSublayer(gradientLayer1)
+    }
+    
+    func setRadius(_ radius: CGFloat = 0) {
+        self.layer.cornerRadius = radius
     }
 
     func updateLayers() {
@@ -97,8 +87,16 @@ extension UIViewController {
         })
     }
 
-    func hideKeyboard() {
+    @IBAction func hideKeyboard() {
         self.view.endEditing(true)
+    }
+
+    @IBAction func dismissWithAnimation() {
+        self.dismiss(animated: true)
+    }
+
+    @IBAction func dismissWithoutAnimation() {
+        self.dismiss(animated: false)
     }
 
     func showAlertView(title: String,
@@ -117,6 +115,14 @@ extension UIViewController {
 
 //https://stackoverflow.com/a/43664156
 extension Date {
+    init(year: Int, month: Int, day: Int) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Calendar.current.locale
+        formatter.timeZone = Calendar.current.timeZone
+        self.init(timeInterval: 0, since: formatter.date(from: "\(year)-\(month)-\(day)")!)
+    }
+
     func isInSameDay(_ date: Date) -> Bool {
         return Calendar.current.isDate(self, equalTo: date, toGranularity: .day)
     }
@@ -137,6 +143,43 @@ extension Date {
     }
     var isInThisWeek: Bool {
         return isInSameWeek(Date())
+    }
+
+    var day: Int {
+        return Calendar.current.dateComponents([.day], from: self).day!
+    }
+    var month: Int {
+        return Calendar.current.dateComponents([.month], from: self).month!
+    }
+    var year: Int {
+        return Calendar.current.dateComponents([.year], from: self).year!
+    }
+    var monthStr: String {
+        return monthStr(locale: Locale.current)
+    }
+    var dayOfWeek: String {
+        return dayOfWeek(locale: Locale.current)
+    }
+
+    func monthStr(locale: Locale) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = locale
+        return dateFormatter.monthSymbols[self.month - 1]
+    }
+
+    func dayOfWeek(locale: Locale) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        dateFormatter.locale = locale
+        return dateFormatter.string(from: self)
+    }
+
+    func toString(format: String) -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.locale = Calendar.current.locale
+        formatter.timeZone = Calendar.current.timeZone
+        return formatter.string(from: self)
     }
 }
 
@@ -193,34 +236,7 @@ extension CGRect {
     }
 }
 
-extension Date {
-    init(year: Int, month: Int, day: Int) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.locale = Calendar.current.locale
-        formatter.timeZone = Calendar.current.timeZone
-        self.init(timeInterval: 0, since: formatter.date(from: "\(year)-\(month)-\(day)")!)
-    }
-
-    func toString(format: String) -> String{
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        formatter.locale = Calendar.current.locale
-        formatter.timeZone = Calendar.current.timeZone
-        return formatter.string(from: self)
-    }
-}
-
-extension Collection where Indices.Iterator.Element == Index {
-    
-    /// Returns the element at the specified index iff it is within bounds, otherwise nil.
-    subscript (safe index: Index) -> Generator.Element? {
-        return indices.contains(index) ? self[index] : nil
-    }
-}
-
 extension Array where Element: Equatable {
-
     // Remove first collection element that is equal to the given `object`:
     mutating func remove(object: Element) {
         if let index = index(of: object) {
@@ -229,8 +245,12 @@ extension Array where Element: Equatable {
     }
 }
 
-//extension Array {
-//    func contains(obj: Element) -> Bool {
-//        return self.filter({$0 === obj}).count > 0
-//    }
-//}
+func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
+    var i = 0
+    return AnyIterator {
+        let next = withUnsafeBytes(of: &i) { $0.load(as: T.self) }
+        if next.hashValue != i { return nil }
+        i += 1
+        return next
+    }
+}

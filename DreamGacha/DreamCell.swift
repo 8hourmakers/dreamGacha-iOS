@@ -7,7 +7,7 @@ import UIKit
 
 class DreamCell: UICollectionViewCell {
 
-    var item: DreamItem? = nil
+    var item: DreamItem!
 
     @IBOutlet weak var bg: UIView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -25,9 +25,11 @@ class DreamCell: UICollectionViewCell {
 
         EventBus.register(self, event: .deleteModeEnabled, action: #selector(self.deleteModeEnabled))
         EventBus.register(self, event: .deleteModeDisabled, action: #selector(self.deleteModeDisabled))
+        EventBus.register(self, event: .dreamCellSelectAll, action: #selector(self.enableRadio))
+        EventBus.register(self, event: .dreamCellDeselectAll, action: #selector(self.disableRadio))
     }
 
-    func setItem(_ item: DreamItem, selected: Bool = false) {
+    func setItem(_ item: DreamItem) {
         self.item = item
 
         self.dateLabel.text = item.createDate
@@ -38,8 +40,10 @@ class DreamCell: UICollectionViewCell {
             self.deleteModeEnabled()
         }
         
-        if(selected) {
+        if(item.isSelected) {
             self.enableRadio()
+        } else {
+            self.disableRadio()
         }
     }
     
@@ -74,10 +78,12 @@ class DreamCell: UICollectionViewCell {
     }
 
     func enableRadio() {
+        item.isSelected = true
         radioBtn.setImage(UIImage(named: "radioOn1"), for: .normal)
     }
 
     func disableRadio() {
+        item.isSelected = false
         radioBtn.setImage(UIImage(named: "radioOff1"), for: .normal)
     }
 }
